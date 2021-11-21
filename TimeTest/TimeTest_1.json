@@ -26,7 +26,7 @@
     "java_path": "java",
     "num_cn_nodes": 100,
     "num_seeds": 15,
-    "out_dir": "FAVITES_output_6",
+    "out_dir": "FAVITES_time_test_output_1",
     "seed_sequence_length": 10,
     "tree_rate_mean": -6.164,
     "tree_rate_stdev": 0.3,
