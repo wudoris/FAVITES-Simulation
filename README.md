@@ -55,10 +55,21 @@ In this section, we will discuss the module implementations important for simula
 Besides parameters specific to the epidemic itself, the real-life sampling effort can also be designed via the following modules.
 
 6. **NodeAvailability**
+   - Subsamples the nodes in the Contact Network (to simulate imperfect epidemiological efforts)
+   
 7. **NumBranchSample**
+   - Chooses the number of viral phylogeny branches to be sampled during a single sampling (i.e. sequencing) event of a given individual in the ContactNetwork
+   
 8. **Sequencing**
-9. **TimeSample**
+   - Simulates sequencing imperfections, such as…
+     - Sequence subsampling per individual
+     - Sequencing error
+     - Post-processing
+     - Consensus (ambiguity, etc.)
 
+9. **TimeSample**
+   - Chooses times at which a given individual in the ContactNetwork was sampled (i.e. sequenced)
+   - 
 
 Other module implementations are also required to be specified in the config file to provide coherent instructions to the simulation. However, only the ones mentioned above have crucial biological meaning for my project (and were thus discussed in detail). More information on the complete list of modules can be found in the the [FAVITES Wiki](https://github.com/niemasd/FAVITES/wiki).
 
