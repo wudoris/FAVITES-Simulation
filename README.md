@@ -1,19 +1,21 @@
 # My Project
 Phylogenetic approaches, in which statistical models are fit to genealogies constructed from pathogen
 genomes, have recently become an important source of information on the transmission dynamics of diseases. 
+Recently, multiple methods have been developed to infer properties of transmission networks from molecular data, such as BEAST2.
 The [Pennell lab](https://www.zoology.ubc.ca/person/matthew-pennell) has recently discovered a statistical issue that suggests that in some cases, this
 phylogenetic information may be misleading. 
 
-In order to study this potential discrepancy between the actual and reconstructed epidemic, I will utilize FAVITES to simulate viral transmissions.
-The viral sequence generated will subsequently be used to reconstruct the epidemic in BEAST2. The examination of the reconstruction and prediction processes will 
-shed light on how well and accurate the current methods work.
+In order to study the promise and limitation of BEAST2, and any potential discrepancy between the actual and reconstructed epidemic, I will utilize FAVITES to simulate viral transmissions with the same substitution rates used in [this study](https://doi.org/10.1093/molbev/msab149). The viral sequence generated will subsequently be used to reconstruct the epidemic in BEAST2. The examination of the reconstruction and prediction processes will shed light on how well and accurate the current methods work. More broadly, the effectiveness of these methods in helping facilitate public health interpretations is the subject of ongoing clinical and theoretical research, including mine.
 
 
-# FAVITES Simulation
+# Transmission Network and FAVITES Simulation
+
+It is widely accepted that social and sexual networks drive the spread of infectious diseases. Therefore, reconstructing the transmission histories using molecular data sampled in patients could provide crucial information to enhance intervention. The nature of a transmission network is a contact network, a graph with nodes representing the individuals and edges representing any type of contact.
 
 **FAVITES** (FrAmework for VIral Transmission and Evolution Simulation) is a robust modular framework for simulation of viral transmissions and sequence evolution 
-([Moshiri *et al*., 2018](https://doi.org/10.1093/bioinformatics/bty921)). By breaking the interaction network down to nodes and edges, the users can easily customize
-the simulation process by parameterizing the module classes. 
+([Moshiri *et al*., 2018](https://doi.org/10.1093/bioinformatics/bty921)). By breaking the interaction network down to nodes and edges, the users can easily customize the simulation process by parameterizing the module implementations. In the statistical sense, each sub-model created by one module implementation can be integrated into the complex composite generative model. 
+
+![This is an image](https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/35/11/10.1093_bioinformatics_bty921/3/bty921f1.jpeg?Expires=1641417451&Signature=ioS7Jj9rgeLAyuy4Dvcv8YvilQ4rdTA~e5HCszcA1qTW2ryrFEacp4GuSFaHef0q-UhwsyLJUua74xijyzKXM2iYECFG8cTiEWhix8Qk28SAMaHxENwdP5etwK9ExfE2dviP6KGgaUv2LyNbIq2KVOJTRrRsUNiZdfzz8ZNYAumYCfw63iYlZVt3KNBX4a1kOx2hj62XvUfX94wbLilI-6YrvGPmmKbSIutMvoYTyBXqJxOO1UOxOVdkIQq5lY9r7xDK9YLXDglT2XjawTEflLHG7tN2PogiaSy3WbtacCHOLyvIaDHgMHcGO7xR-VeABqx52rz9j-0p7iYdQpbTNQ__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
 
 All the installation information, requirements, usage, file format descriptions, etc., are located in the [FAVITES Wiki](https://github.com/niemasd/FAVITES/wiki).
 
@@ -69,7 +71,6 @@ Besides parameters specific to the epidemic itself, the real-life sampling effor
 
 9. **TimeSample**
    - Chooses times at which a given individual in the ContactNetwork was sampled (i.e. sequenced)
-   - 
 
 Other module implementations are also required to be specified in the config file to provide coherent instructions to the simulation. However, only the ones mentioned above have crucial biological meaning for my project (and were thus discussed in detail). More information on the complete list of modules can be found in the the [FAVITES Wiki](https://github.com/niemasd/FAVITES/wiki).
 
