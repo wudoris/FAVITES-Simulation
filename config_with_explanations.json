@@ -1,0 +1,92 @@
+# Note: this config file only acts as a guide for making the
+# config file, the run-able version can be found under 
+# main branch: final_config.json
+
+# Module Implementations
+    "ContactNetwork": "NetworkX",
+    "ContactNetworkGenerator": "BarabasiAlbert",
+    "Driver": "Default",
+    "Logging": "File",
+    "NodeAvailability": "Perfect",
+    "NodeEvolution": "VirusTreeSimulator",
+    #Evolves viral phylogenetic trees under a 
+    coalescent model with various effective population 
+    growth models (logistic growth)
+    "NumBranchSample": "Single",
+    #A single branch is sampled at each given time
+    "NumTimeSample": "Once",
+    "SeedSelection": "Random",
+    "SeedSequence": "Random",
+    "SequenceEvolution": "GTRGammaSeqGen",  
+    # evolves the sequence of the viruses within a specific node until a specific time
+    # Uses Seq-Gen to simulate sequence evolution on the generated phylogenetic 
+    trees using the GTR+Γ model
+    # requires SeqGen and Treeswift
+
+    "Sequencing": "Perfect",
+    "SourceSample": "Random",
+    "TimeSample": "End",
+    # All individuals who are infected at the end 
+    # of the transmission simulation are sampled (i.e., sequenced) once exactly at the end
+    "TreeNode": "Simple",
+    "TreeUnit": "LogNormal", 
+    # converts a phylogenetic tree from units of time to units of per-site mutation rate
+    # The rate of mutations per time is sampled from a user-parameterized Log-Normal distribution
+    # requires NumPy and TreeSwift
+
+    "TransmissionNodeSample": "RandomSingleInfection", 
+    "EndCriteria": "Transmissions",
+    "TransmissionTimeSample": "Fixed",
+    #chooses the time at which a given transmission 
+    event will occur
+
+
+    # Parameter Choices
+
+    # EndCriteria_Transmissions
+    "end_transmissions": 80,
+
+    #TransmissionTimeSample_fixed
+    "fixed_transmission_time_delta": 0.5,
+
+    #NodeEvolution_VirusTreeSimulator
+    "java_path": "java",
+    "vts_growthRate": 2.851904,
+    "vts_max_attempts": 50,
+    "vts_model": "logistic",
+    "vts_n0": 1,
+    "vts_t50": -2
+
+    #ContactNetworkGenerator_BarabasiAlbert
+    "num_cn_nodes": 1000,
+    "num_edges_from_new": 2,
+
+    #SeedSelection_random
+    "num_seeds": 120,
+
+    #Driver_default
+    "out_dir": "FAVITES_output_oct",
+    "num_viruses_per_cn_sample": ""
+
+    #SeedSequence_Random
+    "seed_sequence_length": 20,
+    
+
+    # SequenceEvolution_GTRGammaSeqGen
+    "seqgen_a_to_c": 1.81180,
+    "seqgen_a_to_g": 9.93411,
+    "seqgen_a_to_t": 0.71840,
+    "seqgen_c_to_g": 0.97148,
+    "seqgen_c_to_t": 9.93411,
+    "seqgen_freq_a": 0.392,
+    "seqgen_freq_c": 0.164,
+    "seqgen_freq_g": 0.212,
+    "seqgen_freq_t": 0.232,
+    "seqgen_g_to_t": 1.0,
+    "seqgen_gamma_shape": 0.405129,
+    "seqgen_num_gamma_rate_categories": "",
+    "seqgen_path": "seq-gen",
+
+    #TreeUnit
+    "tree_rate_mean": -6.1,
+    "tree_rate_stdev": 0.3,
