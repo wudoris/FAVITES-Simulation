@@ -74,6 +74,40 @@ Besides parameters specific to the epidemic itself, the real-life sampling effor
 
 Other module implementations are also required to be specified in the config file to provide coherent instructions to the simulation. However, only the ones mentioned above have crucial biological meaning for my project (and were thus discussed in detail). More information on the complete list of modules can be found in the the [FAVITES Wiki](https://github.com/niemasd/FAVITES/wiki).
 
+# Generating the docker image
+Following instructions provided above and referring to the "final_config.json" file in the main branch of this repository, you should now have you config file ready to run FAVITES. If you installed FAVITES [using the Docker image](https://github.com/niemasd/FAVITES/wiki/Installation#using-docker-recommended) (recommended), you can run FAVITES using `run_favites_docker.py` in your terminal:
+
+An example would be:
+
+ `run_favites_docker.py -c final_config.json`
+
+- Sometimes you might see an error messages such as:
+
+`Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?`
+`RuntimeError: docker images command failed`
+
+If you see this, make sure you have your Docker Desktop open already.
+
+- Warning messages could also occur but you don't need to worry about it too much:
+
+`WARNING: The requested image's platform (linux/amd64) does not match the detected host plastform (linux/arm64/v8) and no specific platform was requested`
 
 
- 
+# Managing the files
+For convenience and also for terminal too get access to all the files included in this project, I stored all my files in one folder. I would recommend doing this.
+
+Sometimes terminal can have trouble looking for the files you want, so it would be helpful if you change the directory to the file you made before running FAVITES.
+
+This could be done by: (also in terminal)
+
+`cd /User/doriswu`
+
+# Output files
+After Docker finishes running your FAVITES simulation, it will provide you with information such as the time taken for running and also the output size.
+The output files contain everything we want from the simulation: the sequence data, the transmission network and the time trees.
+There are independent folders for `error_free_files` and `error_prone_files`.
+
+For more information on the output file structure can be found [here](https://github.com/niemasd/FAVITES/wiki/Output-Folder-Structure).
+
+To open the sequence data file (fasta.gzip) which will be analyzed in BEAST2, run command line `gunzip` in terminal.
+
